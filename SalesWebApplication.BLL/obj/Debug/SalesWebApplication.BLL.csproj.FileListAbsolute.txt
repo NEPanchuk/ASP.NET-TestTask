@@ -1,0 +1,17 @@
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\SalesWebApplication.BLL.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\SalesWebApplication.BLL.pdb
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\AutoMapper.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\Ninject.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\SalesWebApplication.DAL.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\EntityFramework.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\SalesWebApplication.DAL.pdb
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\SalesWebApplication.DAL.dll.config
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\AutoMapper.pdb
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\AutoMapper.xml
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\Ninject.xml
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\bin\Debug\EntityFramework.xml
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\obj\Debug\SalesWebApplication.BLL.csprojAssemblyReference.cache
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\obj\Debug\SalesWebApplication.BLL.csproj.CoreCompileInputs.cache
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\obj\Debug\SalesWebApplication.BLL.csproj.CopyComplete
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\obj\Debug\SalesWebApplication.BLL.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.BLL\obj\Debug\SalesWebApplication.BLL.pdb

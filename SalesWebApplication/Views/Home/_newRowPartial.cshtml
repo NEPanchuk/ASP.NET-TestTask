@@ -1,0 +1,65 @@
+﻿@model SalesWebApplication.Models.SaleViewModel
+
+<tr id="newRow">
+    <td>
+        @Html.TextBoxFor(model => model.Name)
+    </td>
+    <td>
+        @Html.EditorFor(model => model.CounterpartyName)
+    </td>
+    <td>
+        @Html.EditorFor(model => model.ContactOrganizationName)
+    </td>
+    <td>
+        @Html.EditorFor(model => model.ContactSaleName)
+    </td>
+    <td>
+        @Html.EditorFor(model => model.CityName)
+    </td>
+    <td>
+        <button id="saveBtn" class="btn btn-primary">Сохранить</button>
+        <button id="cancelBtn" class="btn btn-primary">Отменить</button>
+    </td>
+</tr>
+
+
+<script type="text/javascript">
+    $("#cancelBtn").on("click", function () {
+        document.cookie = "addingRow=false";
+        $('#newRow').remove();
+    });
+
+    $("#saveBtn").on("click", function () {
+        var name = $('#Name').val();
+        var counterpartyName = $('#CounterpartyName').val();
+        var contactOrganizationName = $('#ContactOrganizationName').val();
+        var contactSaleName = $('#ContactSaleName').val();
+        var cityName = $('#CityName').val();
+            $.ajax({
+                url: '@Url.Action("Create", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    name: name, counterpartyName: counterpartyName,
+                    contactOrganizationName: contactOrganizationName,
+                    contactSaleName: contactSaleName,
+                    cityName: cityName
+                }),
+                success: function (data) {
+                    if (data == '"Успешное добавление"') {
+                        document.cookie = "addingRow=false";
+                        window.location.reload();
+                    }
+                    else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    document.cookie = "addingRow=false";
+                    alert("Ошибка при создании");
+                    $('#newRow').remove();
+                }
+            });
+        });
+</script>

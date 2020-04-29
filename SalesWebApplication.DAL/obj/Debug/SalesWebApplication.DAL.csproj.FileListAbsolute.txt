@@ -1,0 +1,12 @@
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\SalesWebApplication.DAL.dll.config
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\SalesWebApplication.DAL.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\SalesWebApplication.DAL.pdb
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\EntityFramework.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\EntityFramework.xml
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\obj\Debug\SalesWebApplication.DAL.csprojAssemblyReference.cache
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\obj\Debug\SalesWebApplication.DAL.csproj.CoreCompileInputs.cache
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\obj\Debug\SalesWebApplication.DAL.csproj.CopyComplete
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\obj\Debug\SalesWebApplication.DAL.dll
+C:\Users\rbnzg\source\repos\SalesWebApplication\SalesWebApplication.DAL\obj\Debug\SalesWebApplication.DAL.pdb

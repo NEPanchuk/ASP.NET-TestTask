@@ -1,0 +1,183 @@
+﻿@model IEnumerable<SalesWebApplication.Models.SaleViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+</head>
+<body>
+    <h2>Продажи</h2>
+    <button id="addBtn" class="btn btn-primary">+ Добавить</button>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CounterpartyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactOrganizationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactSaleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                Действие
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CounterpartyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactOrganizationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactSaleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    <input name="@item.Id" class="btn btn-primary" type="button" value="Редактировать" onclick="Edit(this)" />
+                    <input name="@item.Id" class="btn btn-primary" type="button" value="Удалить" onclick="Remove(this)" />
+                </td>
+            </tr>
+        }
+    </table>
+
+    <script src='@Url.Content("~/Scripts/jquery-3.4.1.min.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/jquery-3.4.1.js")' type="text/javascript"></script>
+    <script type="text/javascript">
+        $("#addBtn").on("click", function () {
+            var adding = getCookie("addingRow");
+            if (adding != 'true') {
+                document.cookie = "addingRow=true";
+                $.get('@Url.Action("AddNewRow")', function (data) {
+                    $("table").append(data);
+                });
+            }
+            else {
+                alert("Сначала сохраните или отмените текущую создаваемую строку");
+            }
+        });
+
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        function Remove(button) {
+            var row = $(button).closest("TR");
+            var name = $("TD", row).eq(0).html();
+            var id = button.name;
+            if (confirm("Вы хотите удалить следующую продажу: " + name)) {
+                var table = $("table")[0];
+                table.deleteRow(row[0].rowIndex);
+                $.ajax({
+                url: '@Url.Action("Delete", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    id: id
+                }),
+                success: function (data) {
+                    alert("Удалено");
+                },
+                error: function () {
+                    alert("Ошибка при удалении");
+                }
+                });
+            }
+        };
+
+        function Edit(button) {
+            var update = getCookie("updateRow");
+            if (update != 'true') {
+                document.cookie = "updateRow=true";
+
+                var row = $(button).closest("TR");
+                var id = button.name;
+                var myArray = ["Name", "CounterpartyName", "ContactOrganizationName", "ContactSaleName", "CityName"];
+
+                for (let i = 0; i < 5; i++) {
+                    var valueTD = $("TD", row).eq(i).html();
+                    $("TD", row).eq(i).html('<input id=' + myArray[i] + ' name=' + myArray[i] + ' type="text" value=' + valueTD + '>');
+                }
+
+                $("TD", row).eq(5).html('<input name=' + id + ' class="btn btn-primary" type="button" value="Сохранить" onclick="Save(this)" /><input name=' + id + ' class="btn btn-primary" type="button" value="Отменить" onclick="Cancel(this)" />');
+            }
+            else {
+                alert("Сначала сохраните или отмените текущую редактируемую строку");
+            }
+        };
+
+        function Cancel(button) {
+            document.cookie = "updateRow=false";
+
+            var row = $(button).closest("TR");
+            var id = button.name;
+
+            for (let i = 0; i < 5; i++) {
+                var valueTD = $("TD", row).eq(i).html();
+
+                var HTMLSTRING = $($.parseHTML(valueTD)).val();
+                $("TD", row).eq(i).html(HTMLSTRING);
+            }
+
+            $("TD", row).eq(5).html('<input name=' + id + ' class="btn btn-primary" type="button" value="Редактировать" onclick="Edit(this)"><input name=' + id + ' class="btn btn-primary" type="button" value="Удалить" onclick="Remove(this)">');
+        };
+
+        function Save(button) {
+            var name = $('#Name').val();
+        var counterpartyName = $('#CounterpartyName').val();
+        var contactOrganizationName = $('#ContactOrganizationName').val();
+        var contactSaleName = $('#ContactSaleName').val();
+            var cityName = $('#CityName').val();
+
+            var id = button.name;
+            $.ajax({
+                url: '@Url.Action("Update", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({id: id,
+                    name: name, counterpartyName: counterpartyName,
+                    contactOrganizationName: contactOrganizationName,
+                    contactSaleName: contactSaleName,
+                    cityName: cityName
+                }),
+                success: function (data) {
+                    if (data == '"Успешное обновление"') {
+                        document.cookie = "updateRow=false";
+                        window.location.reload();
+                    }
+                    else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    document.cookie = "updateRow=false";
+                    alert("error");
+                }
+            });
+        };
+    </script>
+</body>
+</html>
